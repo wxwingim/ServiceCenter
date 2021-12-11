@@ -27,19 +27,20 @@ namespace UIServiceCenter.ViewModel
 
 
         // command
-        //private RelayCommand2 addNewEmployeeWin;
-        //public RelayCommand2 AddNewEmployeeWin
-        //{
-        //    get
-        //    {
-        //        return  new RelayCommand2(obj =>
-        //        {
-        //            OpenAddNewEmployee();
-        //        } 
-        //        );
-        //    }
-        //}
+        private RelayCommand2 addNewEmployeeWin;
+        public RelayCommand2 AddNewEmployeeWin
+        {
+            get
+            {
+                return  new RelayCommand2(obj =>
+                {
+                    OpenAddNewEmployee();
+                } 
+                );
+            }
+        }
 
+        /*
         private RelayCommand _addNewEmployeeWin;
         public RelayCommand AddNewEmployeeWin
         {
@@ -57,7 +58,7 @@ namespace UIServiceCenter.ViewModel
         {
             OpenAddNewEmployee();
         }
-
+        */
 
 
 
