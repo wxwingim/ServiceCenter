@@ -55,6 +55,7 @@ namespace UIServiceCenter
         {
             InitializeComponent();
             this.Loaded += MainWindow_Loaded;
+            DataContext = new DataManageVM();
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)

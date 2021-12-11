@@ -7,9 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestMainApp", "TestMainApp\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain2", "Domain2\Domain2.csproj", "{B85D7D12-1B69-41B0-8431-44A477B13072}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIServiceCenter", "UIServiceCenter\UIServiceCenter.csproj", "{9CED85A9-DC9E-4E84-B7A9-928ECE538E83}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBServiceCenter", "DBServiceCenter\DBServiceCenter.csproj", "{9F0416F1-7A83-4636-8A92-6E737F428523}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UIServiceCenter", "UIServiceCenter\UIServiceCenter.csproj", "{9CED85A9-DC9E-4E84-B7A9-928ECE538E83}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +27,6 @@ Global
 		{9CED85A9-DC9E-4E84-B7A9-928ECE538E83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CED85A9-DC9E-4E84-B7A9-928ECE538E83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CED85A9-DC9E-4E84-B7A9-928ECE538E83}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9F0416F1-7A83-4636-8A92-6E737F428523}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9F0416F1-7A83-4636-8A92-6E737F428523}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9F0416F1-7A83-4636-8A92-6E737F428523}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9F0416F1-7A83-4636-8A92-6E737F428523}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
