@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace UIServiceCenter.Model
+namespace DataBase
 {
     public class Akt_delivery
     {
@@ -14,6 +15,6 @@ namespace UIServiceCenter.Model
 
         public DateTime? dateDelivery { get; set; }
 
-        public List<Work_order> workOrders { get; set; }
+        List<Work_order> work_orders { get; set; }
     }
 }

@@ -12,6 +12,16 @@ namespace UIServiceCenter.ViewModel
         Action _TargetExecuteMethod;
         Func<bool> _TargetCanExecuteMethod;
 
+        private Action<object> _execute;
+        private Func<object, bool> _canExecute;
+        
+
+        public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
+        {
+            _execute = execute;
+            _canExecute = canExecute;
+        }
+
         public RelayCommand(Action executeMethod)
         {
             _TargetExecuteMethod = executeMethod;

@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace UIServiceCenter.Migrations
+namespace DataBase.Migrations
 {
-    public partial class Initial : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -59,13 +59,29 @@ namespace UIServiceCenter.Migrations
                     lastWork = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     firstWork = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     middleWork = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
-                    mailWork = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    mailWork = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
                     phoneWork = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: false),
                     position = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Employees", x => x.idWork);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Providers",
+                columns: table => new
+                {
+                    idProv = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    innProv = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    addresProv = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    phoneProv = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: false),
+                    emailProv = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Providers", x => x.idProv);
                 });
 
             migrationBuilder.CreateTable(
@@ -89,16 +105,36 @@ namespace UIServiceCenter.Migrations
                     keyModel = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     nameModel = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    typeId1 = table.Column<int>(type: "int", nullable: false)
+                    typeId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Device_models", x => x.keyModel);
                     table.ForeignKey(
-                        name: "FK_Device_models_Device_types_typeId1",
-                        column: x => x.typeId1,
+                        name: "FK_Device_models_Device_types_typeId",
+                        column: x => x.typeId,
                         principalTable: "Device_types",
                         principalColumn: "typeId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PurchaseInvoices",
+                columns: table => new
+                {
+                    numPurchase = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    datePurchase = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    idProvider = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PurchaseInvoices", x => x.numPurchase);
+                    table.ForeignKey(
+                        name: "FK_PurchaseInvoices_Providers_idProvider",
+                        column: x => x.idProvider,
+                        principalTable: "Providers",
+                        principalColumn: "idProv",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -111,24 +147,46 @@ namespace UIServiceCenter.Migrations
                     defect = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     equipment = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     mechanicalDamage = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    idCustom1 = table.Column<int>(type: "int", nullable: false),
-                    keyModel1 = table.Column<int>(type: "int", nullable: false)
+                    idCustom = table.Column<int>(type: "int", nullable: false),
+                    keyModel = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Customer_Devices", x => x.idCustDev);
                     table.ForeignKey(
-                        name: "FK_Customer_Devices_Customers_idCustom1",
-                        column: x => x.idCustom1,
+                        name: "FK_Customer_Devices_Customers_idCustom",
+                        column: x => x.idCustom,
                         principalTable: "Customers",
                         principalColumn: "idCustom",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Customer_Devices_Device_models_keyModel1",
-                        column: x => x.keyModel1,
+                        name: "FK_Customer_Devices_Device_models_keyModel",
+                        column: x => x.keyModel,
                         principalTable: "Device_models",
                         principalColumn: "keyModel",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SpareParts",
+                columns: table => new
+                {
+                    idSpare = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    nameSpare = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    priceSpare = table.Column<int>(type: "int", nullable: false),
+                    unitSpare = table.Column<string>(type: "nvarchar(4)", maxLength: 4, nullable: true),
+                    PurchaseInvoicenumPurchase = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SpareParts", x => x.idSpare);
+                    table.ForeignKey(
+                        name: "FK_SpareParts_PurchaseInvoices_PurchaseInvoicenumPurchase",
+                        column: x => x.PurchaseInvoicenumPurchase,
+                        principalTable: "PurchaseInvoices",
+                        principalColumn: "numPurchase",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -140,21 +198,42 @@ namespace UIServiceCenter.Migrations
                     date_limit = table.Column<DateTime>(type: "datetime2", nullable: false),
                     quarantee = table.Column<bool>(type: "bit", nullable: false),
                     date_admission = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    name_org = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    inn_org = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
-                    addres_org = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    tel_org = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: false),
-                    mail_org = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    id_cust_devidCustDev = table.Column<int>(type: "int", nullable: false)
+                    idCustDev = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Admission_For_Repairs", x => x.num_admission);
                     table.ForeignKey(
-                        name: "FK_Admission_For_Repairs_Customer_Devices_id_cust_devidCustDev",
-                        column: x => x.id_cust_devidCustDev,
+                        name: "FK_Admission_For_Repairs_Customer_Devices_idCustDev",
+                        column: x => x.idCustDev,
                         principalTable: "Customer_Devices",
                         principalColumn: "idCustDev",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ListEntries",
+                columns: table => new
+                {
+                    numRow = table.Column<int>(type: "int", nullable: false),
+                    numPurchase = table.Column<int>(type: "int", nullable: false),
+                    amount = table.Column<int>(type: "int", nullable: false),
+                    idSpare = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ListEntries", x => new { x.numRow, x.numPurchase });
+                    table.ForeignKey(
+                        name: "FK_ListEntries_PurchaseInvoices_numPurchase",
+                        column: x => x.numPurchase,
+                        principalTable: "PurchaseInvoices",
+                        principalColumn: "numPurchase",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ListEntries_SpareParts_idSpare",
+                        column: x => x.idSpare,
+                        principalTable: "SpareParts",
+                        principalColumn: "idSpare",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -162,27 +241,27 @@ namespace UIServiceCenter.Migrations
                 name: "Work_Orders",
                 columns: table => new
                 {
-                    numOrder = table.Column<int>(type: "int", nullable: false),
-                    numAdmission = table.Column<int>(type: "int", nullable: false),
+                    numOrder = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     durationQuarantee = table.Column<int>(type: "int", nullable: false),
                     statusRepair = table.Column<string>(type: "nvarchar(21)", maxLength: 21, nullable: false),
                     statusPaymnt = table.Column<bool>(type: "bit", nullable: false),
                     statusDelivery = table.Column<bool>(type: "bit", nullable: false),
-                    AdmissionForRepairnum_admission = table.Column<int>(type: "int", nullable: false),
-                    numDeliverynumDeliveri = table.Column<int>(type: "int", nullable: false)
+                    num_admission = table.Column<int>(type: "int", nullable: false),
+                    numDeliveri = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Work_Orders", x => new { x.numOrder, x.numAdmission });
+                    table.PrimaryKey("PK_Work_Orders", x => x.numOrder);
                     table.ForeignKey(
-                        name: "FK_Work_Orders_Admission_For_Repairs_AdmissionForRepairnum_admission",
-                        column: x => x.AdmissionForRepairnum_admission,
+                        name: "FK_Work_Orders_Admission_For_Repairs_num_admission",
+                        column: x => x.num_admission,
                         principalTable: "Admission_For_Repairs",
                         principalColumn: "num_admission",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Work_Orders_Akt_Deliveries_numDeliverynumDeliveri",
-                        column: x => x.numDeliverynumDeliveri,
+                        name: "FK_Work_Orders_Akt_Deliveries_numDeliveri",
+                        column: x => x.numDeliveri,
                         principalTable: "Akt_Deliveries",
                         principalColumn: "numDeliveri",
                         onDelete: ReferentialAction.Cascade);
@@ -195,84 +274,152 @@ namespace UIServiceCenter.Migrations
                     numWork = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     dateReady = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    numOrder1 = table.Column<int>(type: "int", nullable: false),
-                    numOrdernumAdmission = table.Column<int>(type: "int", nullable: false),
-                    keyService1 = table.Column<int>(type: "int", nullable: false),
-                    idWork1 = table.Column<int>(type: "int", nullable: false)
+                    numOrder = table.Column<int>(type: "int", nullable: false),
+                    keyService = table.Column<int>(type: "int", nullable: false),
+                    idWork = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Work_Repairs", x => x.numWork);
                     table.ForeignKey(
-                        name: "FK_Work_Repairs_Employees_idWork1",
-                        column: x => x.idWork1,
+                        name: "FK_Work_Repairs_Employees_idWork",
+                        column: x => x.idWork,
                         principalTable: "Employees",
                         principalColumn: "idWork",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Work_Repairs_Services_keyService1",
-                        column: x => x.keyService1,
+                        name: "FK_Work_Repairs_Services_keyService",
+                        column: x => x.keyService,
                         principalTable: "Services",
                         principalColumn: "keyService",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Work_Repairs_Work_Orders_numOrder1_numOrdernumAdmission",
-                        columns: x => new { x.numOrder1, x.numOrdernumAdmission },
+                        name: "FK_Work_Repairs_Work_Orders_numOrder",
+                        column: x => x.numOrder,
                         principalTable: "Work_Orders",
-                        principalColumns: new[] { "numOrder", "numAdmission" },
+                        principalColumn: "numOrder",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SalesInvoices",
+                columns: table => new
+                {
+                    numSales = table.Column<int>(type: "int", nullable: false),
+                    numWork = table.Column<int>(type: "int", nullable: false),
+                    dateSales = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    amountSales = table.Column<int>(type: "int", nullable: false),
+                    idSpare = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SalesInvoices", x => new { x.numSales, x.numWork });
+                    table.ForeignKey(
+                        name: "FK_SalesInvoices_SpareParts_idSpare",
+                        column: x => x.idSpare,
+                        principalTable: "SpareParts",
+                        principalColumn: "idSpare",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_SalesInvoices_Work_Repairs_numWork",
+                        column: x => x.numWork,
+                        principalTable: "Work_Repairs",
+                        principalColumn: "numWork",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Admission_For_Repairs_id_cust_devidCustDev",
+                name: "IX_Admission_For_Repairs_idCustDev",
                 table: "Admission_For_Repairs",
-                column: "id_cust_devidCustDev");
+                column: "idCustDev");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Customer_Devices_idCustom1",
+                name: "IX_Customer_Devices_idCustom",
                 table: "Customer_Devices",
-                column: "idCustom1");
+                column: "idCustom");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Customer_Devices_keyModel1",
+                name: "IX_Customer_Devices_keyModel",
                 table: "Customer_Devices",
-                column: "keyModel1");
+                column: "keyModel");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Device_models_typeId1",
+                name: "IX_Device_models_typeId",
                 table: "Device_models",
-                column: "typeId1");
+                column: "typeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Work_Orders_AdmissionForRepairnum_admission",
+                name: "IX_ListEntries_idSpare",
+                table: "ListEntries",
+                column: "idSpare");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ListEntries_numPurchase",
+                table: "ListEntries",
+                column: "numPurchase");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PurchaseInvoices_idProvider",
+                table: "PurchaseInvoices",
+                column: "idProvider");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SalesInvoices_idSpare",
+                table: "SalesInvoices",
+                column: "idSpare");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SalesInvoices_numWork",
+                table: "SalesInvoices",
+                column: "numWork");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SpareParts_PurchaseInvoicenumPurchase",
+                table: "SpareParts",
+                column: "PurchaseInvoicenumPurchase");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Work_Orders_num_admission",
                 table: "Work_Orders",
-                column: "AdmissionForRepairnum_admission");
+                column: "num_admission");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Work_Orders_numDeliverynumDeliveri",
+                name: "IX_Work_Orders_numDeliveri",
                 table: "Work_Orders",
-                column: "numDeliverynumDeliveri");
+                column: "numDeliveri");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Work_Repairs_idWork1",
+                name: "IX_Work_Repairs_idWork",
                 table: "Work_Repairs",
-                column: "idWork1");
+                column: "idWork");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Work_Repairs_keyService1",
+                name: "IX_Work_Repairs_keyService",
                 table: "Work_Repairs",
-                column: "keyService1");
+                column: "keyService");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Work_Repairs_numOrder1_numOrdernumAdmission",
+                name: "IX_Work_Repairs_numOrder",
                 table: "Work_Repairs",
-                columns: new[] { "numOrder1", "numOrdernumAdmission" });
+                column: "numOrder");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "ListEntries");
+
+            migrationBuilder.DropTable(
+                name: "SalesInvoices");
+
+            migrationBuilder.DropTable(
+                name: "SpareParts");
+
+            migrationBuilder.DropTable(
                 name: "Work_Repairs");
+
+            migrationBuilder.DropTable(
+                name: "PurchaseInvoices");
 
             migrationBuilder.DropTable(
                 name: "Employees");
@@ -282,6 +429,9 @@ namespace UIServiceCenter.Migrations
 
             migrationBuilder.DropTable(
                 name: "Work_Orders");
+
+            migrationBuilder.DropTable(
+                name: "Providers");
 
             migrationBuilder.DropTable(
                 name: "Admission_For_Repairs");

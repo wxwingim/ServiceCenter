@@ -55,20 +55,15 @@ namespace UIServiceCenter
         {
             InitializeComponent();
             this.Loaded += MainWindow_Loaded;
-            DataContext = new DataManageVM();
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            //загрузка вьюмодел для кнопок меню
-            MenuViewModel vm = new MenuViewModel();
-            //даем доступ к этому кодбихайнд
-            vm.CodeBehind = this;
-            //делаем эту вьюмодел контекстом данных
-            this.DataContext = vm;
 
-            //загрузка стартовой View
-            LoadView(ViewType.Customers);
+            MenuViewModel vm = new MenuViewModel();
+            vm.CodeBehind = this;
+            this.DataContext = vm;
+            LoadView(ViewType.Employees);
         }
 
         public void LoadView(ViewType typeView)

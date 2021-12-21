@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UIServiceCenter.Model;
+using UIServiceCenter.ViewModel;
+
 
 namespace UIServiceCenter.View
 {
@@ -23,6 +26,19 @@ namespace UIServiceCenter.View
         public OrdersUC()
         {
             InitializeComponent();
+        }
+
+        private void CreateNewOrder(object sender, RoutedEventArgs e)
+        {
+            AddNewOrderWindow win2 = new AddNewOrderWindow();
+            win2.Owner = Application.Current.MainWindow;
+            win2.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            win2.ShowDialog();
+        }
+
+        public void DoStuff()
+        {
+            ViewAllOrders.ItemsSource = DataWorker.GetAllOrders();
         }
     }
 }

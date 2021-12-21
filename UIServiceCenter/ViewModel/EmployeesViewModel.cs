@@ -7,6 +7,7 @@ using System.ComponentModel;
 using UIServiceCenter.View;
 using System.Windows;
 using UIServiceCenter.Model;
+using DataBase;
 
 namespace UIServiceCenter.ViewModel
 {
@@ -14,10 +15,8 @@ namespace UIServiceCenter.ViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
 
-        //Fields
         private IMainWindowsCodeBehind _MainCodeBehind;
 
-        //ctor
         public EmployeesViewModel(IMainWindowsCodeBehind codeBehind)
         {
             if (codeBehind == null) throw new ArgumentNullException(nameof(codeBehind));
@@ -25,56 +24,31 @@ namespace UIServiceCenter.ViewModel
             _MainCodeBehind = codeBehind;
         }
 
-
-        // command
-        private RelayCommand2 addNewEmployeeWin;
-        public RelayCommand2 AddNewEmployeeWin
+        private void NotifyPropertyChanged(String propertyName)
         {
-            get
+            if (PropertyChanged != null)
             {
-                return  new RelayCommand2(obj =>
-                {
-                    OpenAddNewEmployee();
-                } 
-                );
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
 
-        /*
-        private RelayCommand _addNewEmployeeWin;
-        public RelayCommand AddNewEmployeeWin
+
+
+        //Commands
+
+        /// <summary>
+        /// Все сотрудники
+        /// </summary>
+        private List<Employee> allEmployees = DataWorker.GetAllEmployees();
+
+        public List<Employee> AllEmployees
         {
-            get
+            get { return allEmployees; }
+            set
             {
-                return _addNewEmployeeWin = _addNewEmployeeWin ??
-                  new RelayCommand(OnShowAddEmployee, CanShowAddEmployee);
+                allEmployees = value;
+                NotifyPropertyChanged("AllEmployees");
             }
-        }
-        private bool CanShowAddEmployee()
-        {
-            return true;
-        }
-        private void OnShowAddEmployee()
-        {
-            OpenAddNewEmployee();
-        }
-        */
-
-
-
-        // open window addEmployee
-        private void OpenAddNewEmployee()
-        {
-            AddNewEmployeeWindow newEmployeeWindow = new AddNewEmployeeWindow();
-            SetCenterPositionAndOpen(newEmployeeWindow);
-        }
-
-
-        private void SetCenterPositionAndOpen(Window window)
-        {
-            window.Owner = Application.Current.MainWindow;
-            window.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            window.ShowDialog();
         }
     }
 }

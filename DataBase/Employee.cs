@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
-namespace UIServiceCenter.Model
+namespace DataBase
 {
     public class Employee
     {

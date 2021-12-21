@@ -18,17 +18,17 @@
 
                 <Label Grid.Row="0">Сотрудники</Label>
 
-                <Button Command="{Binding AddNewEmployeeWin}" Grid.Row="1" Content="Добавить сотрудника" Background="#35A0EE" Height="40" HorizontalAlignment="Right" Foreground="White" BorderBrush="Transparent" Width="200" FontFamily="Segoe UI Symbol" Cursor="Hand"/>
+                <Button Command="{Binding AddNewEmployeeWin}" Click="CreateNewEmployee" Grid.Row="1" Content="Добавить сотрудника" Background="#35A0EE" Height="40" Foreground="White" BorderBrush="Transparent" Width="200" FontFamily="Segoe UI Symbol" Cursor="Hand" HorizontalAlignment="Right" HorizontalContentAlignment="Center"/>
 
-                <ListView x:Name="ViewAllCustomers" Grid.Row="2" ItemsSource="{Binding AllEmployees, Mode=OneTime}">
+                <ListView x:Name="ViewAllEmployees" Grid.Row="2" ItemsSource="{Binding AllEmployees}">
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="Фамилия"/>
-                            <GridViewColumn Header="Имя"/>
-                            <GridViewColumn Header="Отчество"/>
-                            <GridViewColumn Header="Номер телефона"/>
-                            <GridViewColumn Header="Должность"/>
-                            <GridViewColumn Header="Email"/>
+                            <GridViewColumn Header="Фамилия" DisplayMemberBinding="{Binding Path=lastWork}"/>
+                            <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding Path=firstWork}"/>
+                            <GridViewColumn Header="Отчество" DisplayMemberBinding="{Binding Path=middleWork}"/>
+                            <GridViewColumn Header="Номер телефона" DisplayMemberBinding="{Binding Path=phoneWork}"/>
+                            <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Path=mailWork}"/>
+                            <GridViewColumn Header="Должность" DisplayMemberBinding="{Binding Path=position}"/>
                         </GridView>
                     </ListView.View>
                 </ListView>

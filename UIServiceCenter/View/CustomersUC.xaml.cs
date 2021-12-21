@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UIServiceCenter.Model;
+using UIServiceCenter.ViewModel;
 
 namespace UIServiceCenter.View
 {
@@ -20,9 +22,24 @@ namespace UIServiceCenter.View
     /// </summary>
     public partial class CustomersUC : UserControl
     {
+        public static ListView? AllCustomersView;
+
         public CustomersUC()
         {
             InitializeComponent();
+        }
+
+        private void CreateNewCustomer(object sender, RoutedEventArgs e)
+        {
+            AddNewCustomerWindow win2 = new AddNewCustomerWindow(this);
+            win2.Owner = Application.Current.MainWindow;
+            win2.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            win2.ShowDialog();
+        }
+
+        public void DoStuff()
+        {
+            ViewAllCustomers.ItemsSource = DataWorker.GetAllCustomers();
         }
     }
 }

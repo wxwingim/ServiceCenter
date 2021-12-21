@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace UIServiceCenter.Model
+namespace DataBase
 {
     public class Device_model
     {
@@ -16,7 +17,10 @@ namespace UIServiceCenter.Model
         [MaxLength(100)]
         public string nameModel { get; set; }
 
-        public Device_type typeId { get; set; }
+        [ForeignKey("deviceType")]
+        public int typeId { get; set; }
+
+        public Device_type deviceType { get; set; }
 
         public List<Customer_device> devices { get; set; }
     }

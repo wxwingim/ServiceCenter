@@ -16,20 +16,23 @@
             </Grid.RowDefinitions>
 
             <Label Grid.Row="0">Клиенты</Label>
+                
+            <Button Command="{Binding AddNewCustomerWin}" Click="CreateNewCustomer" Content="Добавить клиента" Grid.Row="1" Background="#35A0EE" Height="40" Foreground="White" BorderBrush="Transparent" Width="200" FontFamily="Segoe UI Symbol" Cursor="Hand" HorizontalAlignment="Right" HorizontalContentAlignment="Center"/>
 
-            <ListView x:Name="ViewAllCustomers" Grid.Row="2" ItemsSource="{Binding AllUsers}" SelectedItem="{Binding SelectedUser}">
+
+            <ListView x:Name="ViewAllCustomers" Grid.Row="2" ItemsSource="{Binding AllCustomers}">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Имя"                                            
-                                            DisplayMemberBinding="{Binding Path=Name}"/>
+                                            DisplayMemberBinding="{Binding Path=lastCustom}"/>
                         <GridViewColumn Header="Номер телефона"
-                                            DisplayMemberBinding="{Binding Path=Phone}"/>
-                        <GridViewColumn Header="Salary"
-                                            DisplayMemberBinding="{Binding Path=UserPosition.Salary}"/>
-                        <GridViewColumn Header="Должность"
-                                            DisplayMemberBinding="{Binding Path=UserPosition.Name}"/>
+                                            DisplayMemberBinding="{Binding Path=firstCustom}"/>
+                        <GridViewColumn Header="Фамилия"
+                                            DisplayMemberBinding="{Binding Path=middleCustom}"/>
+                        <GridViewColumn Header="Телефон"
+                                            DisplayMemberBinding="{Binding Path=telCustom}"/>
                         <GridViewColumn Header="Email"
-                                            DisplayMemberBinding="{Binding Path=UserPosition.PositionDepartment.Name}"/>
+                                            DisplayMemberBinding="{Binding Path=mailCustom}"/>
                     </GridView>
                 </ListView.View>
             </ListView>
