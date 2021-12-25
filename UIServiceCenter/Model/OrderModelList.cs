@@ -7,9 +7,9 @@ using DataBase;
 
 namespace UIServiceCenter.Model
 {
-    public class OrderModel
+    public class OrderModelList
     {
-        public OrderModel(Work_order work_Order)
+        public OrderModelList(Work_order work_Order)
         {
             numOrder = work_Order.numOrder;
             durationQuarantee = work_Order.durationQuarantee;
@@ -18,9 +18,8 @@ namespace UIServiceCenter.Model
             statusDelivery = work_Order.statusDelivery;
             quarantee = DataWorker.GetAdmission_For_Repair(work_Order.num_admission).quarantee;
             date_admission = DataWorker.GetAdmission_For_Repair(work_Order.num_admission).date_admission;
-
-            //defect = work_Order.AdmissionForRepair.id_cust_dev.defect;
-            //nameModel = work_Order.AdmissionForRepair.id_cust_dev.keyModel.nameModel;
+            defect = DataWorker.GetCustomer_device(DataWorker.GetAdmission_For_Repair(work_Order.num_admission).idCustDev).defect;
+            nameModel = DataWorker.GetDevice_model(DataWorker.GetCustomer_device(DataWorker.GetAdmission_For_Repair(work_Order.num_admission).idCustDev).keyModel).nameModel;
         }
 
         public int numOrder { get; set; }

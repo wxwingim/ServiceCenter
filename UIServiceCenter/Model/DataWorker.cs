@@ -73,13 +73,13 @@ namespace UIServiceCenter.Model
         }
 
         // получить все заказы
-        public static List<OrderModel> GetAllOrders()
+        public static List<OrderModelList> GetAllOrders()
         {
-            List<OrderModel> result = new List<OrderModel>();
+            List<OrderModelList> result = new List<OrderModelList>();
             List<Work_order> work_Orders = GetAllOrdersSmall();
             foreach(Work_order order in work_Orders)
             {
-                result.Add(new OrderModel(order));
+                result.Add(new OrderModelList(order));
             }
             return result;
         }
@@ -104,6 +104,78 @@ namespace UIServiceCenter.Model
         }
 
         // получить CustomerDevice по id
+        public static Customer_device GetCustomer_device(int id)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                Customer_device customerDevice = db.Customer_Devices.FirstOrDefault(p => p.idCustDev == id);
+                return customerDevice;
+            }
+        }
 
+        // получить Device_model по id
+        public static Device_model GetDevice_model(int id)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                Device_model deviceModel = db.Device_models.FirstOrDefault(p => p.keyModel == id);
+                return deviceModel;
+            }
+        }
+
+        // получить все Device_type
+        public static List<Device_type> GetAllDeviceTypes()
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                var result = db.Device_types.ToList();
+                return result;
+            }
+        }
+
+        // создать поступление в ремонт
+        public static string CreateAdmissionForRepair(string lname, string fname, string mname, string phone, string mail)
+        {
+            string result = "";
+
+            //using (ApplicationContext db = new ApplicationContext())
+            //{
+            //    Customer customer = new Customer { lastCustom = lname, firstCustom = fname, middleCustom = mname, telCustom = phone, mailCustom = mail };
+            //    db.Customers.Add(customer);
+            //    db.SaveChanges();
+            //}
+
+            return result;
+        }
+
+        // создать заказ
+        public static string CreateOrder(string lname, string fname, string mname, string phone, string mail)
+        {
+            string result = "";
+
+            //using (ApplicationContext db = new ApplicationContext())
+            //{
+            //    Customer customer = new Customer { lastCustom = lname, firstCustom = fname, middleCustom = mname, telCustom = phone, mailCustom = mail };
+            //    db.Customers.Add(customer);
+            //    db.SaveChanges();
+            //}
+
+            return result;
+        }
+
+        // получить клиента по номеру телефона
+        public static Customer GetCustomerByPhone(string phone)
+        {
+            Customer customer = new Customer();
+            List<Customer> customers = GetAllCustomers();
+            foreach (Customer custom in customers)
+            {
+                if (custom.telCustom == phone)
+                {
+                    customer = custom;
+                }
+            }
+            return customer;
+        }
     }
 }

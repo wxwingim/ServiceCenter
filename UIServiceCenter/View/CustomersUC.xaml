@@ -23,11 +23,11 @@
             <ListView x:Name="ViewAllCustomers" Grid.Row="2" ItemsSource="{Binding AllCustomers}">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Имя"                                            
+                        <GridViewColumn Header="Фамилия"                                            
                                             DisplayMemberBinding="{Binding Path=lastCustom}"/>
-                        <GridViewColumn Header="Номер телефона"
+                        <GridViewColumn Header="Имя"
                                             DisplayMemberBinding="{Binding Path=firstCustom}"/>
-                        <GridViewColumn Header="Фамилия"
+                        <GridViewColumn Header="Отчество"
                                             DisplayMemberBinding="{Binding Path=middleCustom}"/>
                         <GridViewColumn Header="Телефон"
                                             DisplayMemberBinding="{Binding Path=telCustom}"/>

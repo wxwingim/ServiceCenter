@@ -30,7 +30,7 @@ namespace UIServiceCenter.View
 
         private void CreateNewOrder(object sender, RoutedEventArgs e)
         {
-            AddNewOrderWindow win2 = new AddNewOrderWindow();
+            AddNewOrderWindow win2 = new AddNewOrderWindow(this);
             win2.Owner = Application.Current.MainWindow;
             win2.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             win2.ShowDialog();

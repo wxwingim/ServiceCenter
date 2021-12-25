@@ -70,8 +70,8 @@
                 <StackPanel x:Name="CustomerBefore">
                     <Label Style="{StaticResource h2}">Клиент</Label>
                     <StackPanel Orientation="Horizontal" Margin="0 0 0 20">
-                        <Button Content="Выбрать" Height="30" Width="100" Margin="0 0 10 0" Style="{StaticResource AddButton}"/>
-                        <Button Content="Добавить" Height="30" Width="100" Style="{StaticResource AddButton}"/>
+                        <Button x:Name="ChooseCustomer" Content="Выбрать" Height="30" Width="100" Margin="0 0 10 0" Style="{StaticResource AddButton}" Click="ChooseCustomer_Click"/>
+                        <Button x:Name="AddCustomer" Content="Добавить" Height="30" Width="100" Style="{StaticResource AddButton}" Click="AddCustomer_Click"/>
                     </StackPanel>
                 </StackPanel>
 
@@ -92,8 +92,8 @@
                 <StackPanel>
                     <Label Style="{StaticResource h2}">Гарантия</Label>
                     <StackPanel Orientation="Horizontal">
-                        <RadioButton Content="Да" Padding="10 5 10 5" Margin="0 0 20 0" Background="#3035A0EE" ></RadioButton>
-                        <RadioButton Content="Нет" Padding="10 5 10 5" Background="#3035A0EE"></RadioButton>
+                        <RadioButton Content="Да" Padding="10 5 10 5" Margin="0 0 20 0" Background="#35A0EE" ></RadioButton>
+                        <RadioButton Content="Нет" Padding="10 5 10 5" Background="#35A0EE"></RadioButton>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
@@ -106,7 +106,7 @@
 
                 <StackPanel Grid.Column="1" Grid.Row="2">
                     <Label Content="Тип" Style="{StaticResource h4}"></Label>
-                    <ComboBox Width="200" HorizontalAlignment="Left"></ComboBox>
+                    <ComboBox ItemsSource="{Binding Path=AllDevices }" DisplayMemberPath="nameType" Width="200" HorizontalAlignment="Left"></ComboBox>
                 </StackPanel>
                 
                 <StackPanel Grid.Column="1" Grid.Row="2">
@@ -132,8 +132,8 @@
             
             <Border Grid.Row="2" Grid.Column="1" BorderBrush="Transparent" HorizontalAlignment="Stretch">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button Content="Отмена" HorizontalAlignment="Left" Style="{StaticResource CancelButton}" Margin="0 0 20 0"/>
-                    <Button Content="Добавить" HorizontalAlignment="Right" Style="{StaticResource AddButton}"/>
+                    <Button Content="Отмена" x:Name="Back" HorizontalAlignment="Left" Style="{StaticResource CancelButton}" Margin="0 0 20 0" Click="Back_Click"/>
+                    <Button Content="Добавить" x:Name="AddOrder" HorizontalAlignment="Right" Style="{StaticResource AddButton}" Click="AddOrder_Click"/>
                 </StackPanel>
             </Border>
             

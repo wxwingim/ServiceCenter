@@ -33,9 +33,9 @@ namespace UIServiceCenter.ViewModel
         /// <summary>
         /// Все заказы
         /// </summary>
-        private List<OrderModel> allOrders = DataWorker.GetAllOrders();
+        private List<OrderModelList> allOrders = DataWorker.GetAllOrders();
 
-        public List<OrderModel> AllOrders
+        public List<OrderModelList> AllOrders
         {
             get { return allOrders; }
             set

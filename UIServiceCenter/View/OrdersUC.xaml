@@ -17,7 +17,9 @@
 
                 <Label Grid.Row="0">Заказы</Label>
 
-                <Button Command="{Binding AddNewOrderWin}" Click="CreateNewOrder" Content="Добавить заказ" Grid.Row="1" Background="#35A0EE" Height="40" Foreground="White" BorderBrush="Transparent" Width="200" FontFamily="Segoe UI Symbol" Cursor="Hand" HorizontalAlignment="Right" HorizontalContentAlignment="Center"/>
+                <Button Command="{Binding AddNewOrderWin}" 
+                        Click="CreateNewOrder" 
+                        Content="Добавить заказ" Grid.Row="1" Background="#35A0EE" Height="40" Foreground="White" BorderBrush="Transparent" Width="200" FontFamily="Segoe UI Symbol" Cursor="Hand" HorizontalAlignment="Right"/>
 
 
                 <ListView x:Name="ViewAllOrders" Grid.Row="2" ItemsSource="{Binding AllOrders}">
