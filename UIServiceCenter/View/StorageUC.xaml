@@ -12,7 +12,7 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="40"/>
-                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="0.15*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
@@ -22,7 +22,7 @@
                         Content="Добавить" Grid.Row="1" Background="#35A0EE" Height="40" Foreground="White" BorderBrush="Transparent" Width="200" FontFamily="Segoe UI Symbol" Cursor="Hand" HorizontalAlignment="Right" Click="Add_Click"/>
 
                 <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left">
-                    <ComboBox x:Name="types" Width="150" Height="30" ItemsSource="{Binding AllTypes}" DisplayMemberPath="name" SelectionChanged="types_SelectionChanged"/>
+                    <ComboBox x:Name="types" Width="150" Height="30" ItemsSource="{Binding AllTypes}" DisplayMemberPath="name" SelectedIndex="0" SelectionChanged="types_SelectionChanged"/>
                 </StackPanel>
 
                 <ListView x:Name="ViewAllSpareParts" Grid.Row="2" ItemsSource="{Binding AllSpareParts}">

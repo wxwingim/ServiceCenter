@@ -18,7 +18,7 @@
 
                 <Label Grid.Row="0">Сотрудники</Label>
 
-                <Button Command="{Binding AddNewEmployeeWin}" Click="CreateNewEmployee" Grid.Row="1" Content="Добавить сотрудника" Background="#35A0EE" Height="40" Foreground="White" BorderBrush="Transparent" Width="200" FontFamily="Segoe UI Symbol" Cursor="Hand" HorizontalAlignment="Right" HorizontalContentAlignment="Center"/>
+                <Button Visibility="Hidden" Command="{Binding AddNewEmployeeWin}" Click="CreateNewEmployee" Grid.Row="1" Content="Добавить сотрудника" Background="#35A0EE" Height="40" Foreground="White" BorderBrush="Transparent" Width="200" FontFamily="Segoe UI Symbol" Cursor="Hand" HorizontalAlignment="Right" HorizontalContentAlignment="Center"/>
 
                 <ListView x:Name="ViewAllEmployees" Grid.Row="2" ItemsSource="{Binding AllEmployees}">
                     <ListView.View>

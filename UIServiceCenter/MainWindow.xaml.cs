@@ -49,7 +49,7 @@ namespace UIServiceCenter
             MenuViewModel vm = new MenuViewModel();
             vm.CodeBehind = this;
             this.DataContext = vm;
-            LoadView(ViewType.Employees);
+            LoadView(ViewType.Orders);
         }
 
         public void LoadView(ViewType typeView)

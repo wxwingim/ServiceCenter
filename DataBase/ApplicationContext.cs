@@ -28,19 +28,7 @@ namespace DataBase
             optionsBuilder.UseSqlServer("Server=DESKTOP-6LCNOOJ\\MSSQL;Database=servicecenter;Trusted_Connection=True;");
 
             // mac
-            //optionsBuilder.UseSqlServer("Server=KOMP-\\;Database=servicecenter;Trusted_Connection=True;");
+            //optionsBuilder.UseSqlServer("Server=KOMP\\SQLEXPRESS;Database=servicecenter;Trusted_Connection=True;");
         }
-
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    //modelBuilder.Entity<Work_order>().HasKey(c => new { c.numOrder, c.num_admission });
-
-        //    modelBuilder.Entity<ListEntry>().HasKey(c => new { c.numRow, c.numPurchase });
-
-        //    modelBuilder.Entity<SalesInvoice>().HasKey(c => new { c.numSales, c.numWork });
-
-        //    //modelBuilder.Entity<Work_repair>().HasKey(c => new { c.numOrder, c.numWork });
-        //}
-
     }
 }

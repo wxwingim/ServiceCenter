@@ -54,6 +54,7 @@ namespace UIServiceCenter.ViewModel
         private string equipment;
         private string mechanicalDamage;
         private StatusRepair statusRepair;
+        private bool statusDelivery;
 
         public OrderProfileViewModel() { }
 
@@ -70,6 +71,7 @@ namespace UIServiceCenter.ViewModel
             statusRepair = DataWorker.GetStatusRepair(order.statusRepair);
         }
 
+        public bool StatusDelivery { get { return statusDelivery;  } set { statusDelivery = value; } }
         public string CustomerName { get { return customerName; } set { customerName = value; } }
         public string CustomerPhone { get { return customerPhone; } set { customerPhone = value; } }
         public DeviceType TypeDevice { get { return typeDevice; } set { typeDevice = value; } }
@@ -81,7 +83,7 @@ namespace UIServiceCenter.ViewModel
 
         public void EditOrder()
         {
-            DataWorker.EditOrder(order.numOrder, typeDevice.typeId, model, defect, equipment, mechanicalDamage, statusRepair.StatusId, order.statusPaymnt, order.statusDelivery);
+            DataWorker.EditOrder(order.numOrder, typeDevice.typeId, model, defect, equipment, mechanicalDamage, statusRepair.StatusId, order.statusPaymnt, statusDelivery);
         }
     }
 }

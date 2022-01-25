@@ -29,38 +29,12 @@ namespace UIServiceCenter.View
             List<ResourceD> resources = DataWorker.GetResourceDByNumOrder(order.numOrder);
             ViewAllServices.ItemsSource = DataWorker.GetWorkRepairModelsByNumOrder(order.numOrder);
             ViewAllSpareParts.ItemsSource = DataWorker.GetStorageModelsByNumOrder(order.numOrder);
-            number.Text += order.numOrder.ToString();
 
-            OrderProfileViewModel orderProfile = new OrderProfileViewModel(order);
-
-            orderD = new OrderD(resources, DataWorker.GetAllPurchase(), orderProfile.StatusRepair.StatusName, order.statusPaymnt);
-            if (order.quarantee)
-            {
-                guarantee.Text = "Ремонт по гарантии";
-            }
+            orderD = new OrderD(resources, DataWorker.GetAllPurchase(), order.statusRepair, order.statusPaymnt);
             price.Text = orderD.SummOrder();
             guarant.Text = orderD.GuaranteeOrder().ToString();
 
-            if (orderD.CheckStatuses())
-            {
-                Pay.Visibility = Visibility.Collapsed;
-                Paid.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                Paid.Visibility = Visibility.Collapsed;
-                Pay.Visibility = Visibility.Visible;
-            }
-
-            CustomerPhone.Content = orderProfile.CustomerPhone;
-            CustomerName.Content = orderProfile.CustomerName;
-            type.SelectedValue = orderProfile.TypeDevice.typeId;
-            model.Text = orderProfile.Model;
-            defect.Text = orderProfile.Defect;
-            equipment.Text = orderProfile.Equipment;
-            mechanicalDamage.Text = orderProfile.MechanicalDamage;
-            status.SelectedValue = orderProfile.StatusRepair.StatusId;
-
+            InitializedWindow();
         }
 
         public OrderProfileWindow(CustomerProfileWindow parentCustom, OrderModel order)
@@ -75,14 +49,21 @@ namespace UIServiceCenter.View
             ViewAllSpareParts.ItemsSource = DataWorker.GetStorageModelsByNumOrder(order.numOrder);
 
             orderD = new OrderD(resources, DataWorker.GetAllPurchase());
+            price.Text = orderD.SummOrder();
+
+            InitializedWindow();
+
+        }
+
+        private void InitializedWindow()
+        {
+            number.Text += order.numOrder.ToString();
+            OrderProfileViewModel orderProfile = new OrderProfileViewModel(order);
 
             if (order.quarantee)
             {
                 guarantee.Text = "Ремонт по гарантии";
             }
-            price.Text = orderD.SummOrder();
-
-            OrderProfileViewModel orderProfile = new OrderProfileViewModel(order);
 
             if (orderD.CheckStatuses())
             {
@@ -122,6 +103,11 @@ namespace UIServiceCenter.View
             orderProfile.Equipment = equipment.Text;
             orderProfile.MechanicalDamage = mechanicalDamage.Text;
             orderProfile.StatusRepair = (StatusRepair)status.SelectedItem;
+            
+            if(((StatusRepair)status.SelectedItem).StatusName == "Выдан" || ((StatusRepair)status.SelectedItem).StatusName == "Выдан без ремонта")
+            {
+                orderProfile.StatusDelivery = true;
+            }
 
             orderProfile.EditOrder();
 

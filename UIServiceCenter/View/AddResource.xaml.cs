@@ -39,10 +39,10 @@ namespace UIServiceCenter.View
             {
                 Employee employee = (Employee)employeeChoose.SelectedItem;
                 Service service = (Service)ViewAllServices.SelectedItem;
-                // Domain//
+                service.priceService *= 100;
+
                 ResourceD resource = new ServiceD(service, employee, new WorkRepair { idWork = employee.idWork, keyService = service.keyService });
                 orderD.Resources.Add(resource);
-                //      //
 
                 parent.ViewAllServices.ItemsSource = DataWorker.ServiceToWorkRepairModel(orderD.Services());
 

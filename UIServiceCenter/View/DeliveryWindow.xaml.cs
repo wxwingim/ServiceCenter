@@ -12,6 +12,13 @@ namespace UIServiceCenter.View
         {
             InitializeComponent();
             this.parent = parent;
+
+            akt.Text += parent.number.Text;
+            ViewAllServices.ItemsSource = parent.ViewAllServices.Items;
+            ViewAllSpareParts.ItemsSource = parent.ViewAllSpareParts.Items;
+            price.Text = parent.price.Text;
+            guarantee.Text = parent.guarantee.Text;
+            guarant.Text = parent.guarant.Text;
         }
     }
 }

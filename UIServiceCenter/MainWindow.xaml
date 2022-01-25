@@ -29,7 +29,7 @@
 
             <!--Меню-->
             <StackPanel Grid.Column="0"  Background="#35A0EE" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                <Button Command="{Binding LoadJobsUCCommand, Mode=OneTime}"  Style="{StaticResource MenuButton}">
+                <Button Visibility="Hidden" Command="{Binding LoadJobsUCCommand, Mode=OneTime}"  Style="{StaticResource MenuButton}">
                     <TextBlock FontFamily="Segoe UI Symbol" FontSize="14">
                     <Run Text="Задачи" />
                     </TextBlock>
