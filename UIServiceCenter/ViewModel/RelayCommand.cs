@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Windows.Input;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace UIServiceCenter.ViewModel
 {
@@ -14,7 +10,7 @@ namespace UIServiceCenter.ViewModel
 
         private Action<object> _execute;
         private Func<object, bool> _canExecute;
-        
+
 
         public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
         {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace DataBase
@@ -34,6 +30,6 @@ namespace DataBase
         [MaxLength(50)]
         public string position { get; set; }
 
-        public List<Work_repair> workRepairs { get; set; }
+        public List<WorkRepair> workRepairs { get; set; }
     }
 }

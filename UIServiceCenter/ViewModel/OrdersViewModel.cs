@@ -1,10 +1,7 @@
-﻿using System;
+﻿using DataBase;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ComponentModel;
-using DataBase;
 using UIServiceCenter.Model;
 
 
@@ -33,15 +30,30 @@ namespace UIServiceCenter.ViewModel
         /// <summary>
         /// Все заказы
         /// </summary>
-        private List<OrderModelList> allOrders = DataWorker.GetAllOrders();
+        private List<OrderModel> allOrders = DataWorker.GetAllOrders();
 
-        public List<OrderModelList> AllOrders
+        public List<OrderModel> AllOrders
         {
             get { return allOrders; }
             set
             {
                 allOrders = value;
                 NotifyPropertyChanged("AllOrders");
+            }
+        }
+
+        /// <summary>
+        /// Все статусы ремонта
+        /// </summary>
+        private List<StatusRepair> allStatusesRepair = DataWorker.GetStatusRepairsWithAll();
+
+        public List<StatusRepair> AllStatusesRepair
+        {
+            get { return allStatusesRepair; }
+            set
+            {
+                allStatusesRepair = value;
+                NotifyPropertyChanged("AllStatusesRepair");
             }
         }
     }

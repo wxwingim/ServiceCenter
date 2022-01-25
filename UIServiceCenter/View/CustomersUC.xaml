@@ -20,7 +20,7 @@
             <Button Command="{Binding AddNewCustomerWin}" Click="CreateNewCustomer" Content="Добавить клиента" Grid.Row="1" Background="#35A0EE" Height="40" Foreground="White" BorderBrush="Transparent" Width="200" FontFamily="Segoe UI Symbol" Cursor="Hand" HorizontalAlignment="Right" HorizontalContentAlignment="Center"/>
 
 
-            <ListView x:Name="ViewAllCustomers" Grid.Row="2" ItemsSource="{Binding AllCustomers}">
+            <ListView x:Name="ViewAllCustomers" Grid.Row="2" ItemsSource="{Binding AllCustomers}" MouseLeftButtonUp="leftMouseClick">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Фамилия"                                            

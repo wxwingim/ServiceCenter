@@ -1,19 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DataBase;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using UIServiceCenter.Model;
-using UIServiceCenter.ViewModel;
 
 
 namespace UIServiceCenter.View
@@ -39,6 +27,27 @@ namespace UIServiceCenter.View
         public void DoStuff()
         {
             ViewAllOrders.ItemsSource = DataWorker.GetAllOrders();
+        }
+
+        private void leftMouseClick(object sender, RoutedEventArgs e)
+        {
+            OrderProfileWindow win2 = new OrderProfileWindow((OrderModel)ViewAllOrders.SelectedItem, this);
+            win2.Owner = Application.Current.MainWindow;
+            win2.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            win2.ShowDialog();
+        }
+
+        private void status_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            StatusRepair selectedStatus = (StatusRepair)status.SelectedItem;
+            if (selectedStatus.StatusId == -1)
+            {
+                ViewAllOrders.ItemsSource = DataWorker.GetAllOrders();
+            }
+            else
+            {
+                ViewAllOrders.ItemsSource = DataWorker.GetAllOrdersByStatusRepair(selectedStatus.StatusId);
+            }
         }
     }
 }

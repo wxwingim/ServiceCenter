@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DataBase;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using UIServiceCenter.Model;
 
 namespace UIServiceCenter.View
 {
@@ -23,6 +13,32 @@ namespace UIServiceCenter.View
         public StorageUC()
         {
             InitializeComponent();
+        }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+            AddFullPurchase newWin = new AddFullPurchase(this);
+            newWin.Owner = Application.Current.MainWindow;
+            newWin.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            newWin.ShowDialog();
+        }
+
+        public void DoStuff()
+        {
+            ViewAllSpareParts.ItemsSource = DataWorker.GetStorage();
+        }
+
+        private void types_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            TypeSparePart SelectedType = (TypeSparePart)types.SelectedItem;
+            if (SelectedType.IdTypeSP == -1)
+            {
+                ViewAllSpareParts.ItemsSource = DataWorker.GetStorage();
+            }
+            else
+            {
+                ViewAllSpareParts.ItemsSource = DataWorker.GetStorage(SelectedType);
+            }
         }
     }
 }

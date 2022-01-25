@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace UIServiceCenter.Model
 {
-    public class RelayCommand2:ICommand
+    public class RelayCommand2 : ICommand
     {
         private Action<object> _execute;
         private Func<object, bool> _canExecute;

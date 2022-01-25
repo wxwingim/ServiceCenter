@@ -1,18 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DataBase;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using UIServiceCenter.ViewModel;
-using DataBase;
 
 namespace UIServiceCenter.View
 {
@@ -26,14 +14,22 @@ namespace UIServiceCenter.View
         public ChooseClientWindow(AddNewOrderWindow parent)
         {
             InitializeComponent();
-            DataContext = new ChooseClientView();
+            DataContext = new ChooseClientViewModel();
             this.parent = parent;
         }
 
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
             Customer customer = new Customer();
-            //customer = ViewAllCustomers.SelectedItem as Customer;
+
+            customer = (Customer)ViewAllCustomers.SelectedItem;
+            parent.CustomerBefore.Visibility = Visibility.Hidden;
+            parent.CustomerAfter.Visibility = Visibility.Visible;
+            parent.OrderCustomerName.Content = customer.lastCustom + " " + customer.firstCustom + " " + customer.middleCustom;
+            parent.OrderCustomerPhone.Content = customer.telCustom;
+            parent.selectedCustomer.Items.Add(customer);
+
+            this.Close();
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)

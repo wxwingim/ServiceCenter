@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UIServiceCenter.Model;
 
 namespace UIServiceCenter.ViewModel
@@ -38,7 +34,6 @@ namespace UIServiceCenter.ViewModel
                 }
             }
         }
-
         public string FirstName
         {
             get { return _firstName; }
@@ -51,7 +46,6 @@ namespace UIServiceCenter.ViewModel
                 }
             }
         }
-
         public string MiddleName
         {
             get { return _middleName; }
@@ -64,7 +58,6 @@ namespace UIServiceCenter.ViewModel
                 }
             }
         }
-
         public string Phone
         {
             get { return _phone; }
@@ -77,7 +70,6 @@ namespace UIServiceCenter.ViewModel
                 }
             }
         }
-
         public string Email
         {
             get { return _email; }
@@ -105,7 +97,7 @@ namespace UIServiceCenter.ViewModel
 
         public void CreateNewCustomer()
         {
-            DataWorker.CreateCustomer(LastName, FirstName, MiddleName, Phone, Email);
+            DataWorker.CreateCustomer(_lastName, _firstName, _middleName, _phone, _email);
         }
     }
 }

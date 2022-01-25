@@ -1,13 +1,8 @@
-﻿using System;
+﻿using DataBase;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ComponentModel;
-using UIServiceCenter.View;
-using System.Windows;
 using UIServiceCenter.Model;
-using DataBase;
 
 namespace UIServiceCenter.ViewModel
 {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace DataBase
@@ -18,6 +14,8 @@ namespace DataBase
         [Required]
         public int priceService { get; set; }
 
-        public List<Work_repair> workRepairs { get; set; }
+        public int guarantee { get; set; }
+
+        public List<WorkRepair> workRepairs { get; set; }
     }
 }

@@ -17,22 +17,27 @@
                 </Grid.RowDefinitions>
 
                 <Label Grid.Row="0">Склад</Label>
+                
+                <Button x:Name="Add"
+                        Content="Добавить" Grid.Row="1" Background="#35A0EE" Height="40" Foreground="White" BorderBrush="Transparent" Width="200" FontFamily="Segoe UI Symbol" Cursor="Hand" HorizontalAlignment="Right" Click="Add_Click"/>
 
-                <ListView x:Name="ViewAllCustomers" Grid.Row="2" ItemsSource="{Binding AllUsers}" SelectedItem="{Binding SelectedUser}">
+                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left">
+                    <ComboBox x:Name="types" Width="150" Height="30" ItemsSource="{Binding AllTypes}" DisplayMemberPath="name" SelectionChanged="types_SelectionChanged"/>
+                </StackPanel>
+
+                <ListView x:Name="ViewAllSpareParts" Grid.Row="2" ItemsSource="{Binding AllSpareParts}">
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="Фамилия"                                            
-                                            DisplayMemberBinding="{Binding Path=Name}"/>
-                            <GridViewColumn Header="Имя"
-                                            DisplayMemberBinding="{Binding Path=UserPosition.Salary}"/>
-                            <GridViewColumn Header="Отчество"
-                                            DisplayMemberBinding="{Binding Path=UserPosition.Salary}"/>
-                            <GridViewColumn Header="Номер телефона"
-                                            DisplayMemberBinding="{Binding Path=Phone}"/>
-                            <GridViewColumn Header="Должность"
-                                            DisplayMemberBinding="{Binding Path=UserPosition.Name}"/>
-                            <GridViewColumn Header="Email"
-                                            DisplayMemberBinding="{Binding Path=UserPosition.PositionDepartment.Name}"/>
+                            <GridViewColumn Header="Тип"
+                                            DisplayMemberBinding="{Binding Path=typeSparePart}"/>
+                            <GridViewColumn Header="Наименование"                                            
+                                            DisplayMemberBinding="{Binding Path=nameSpare}"/>
+                            <GridViewColumn Header="Цена"
+                                            DisplayMemberBinding="{Binding Path=price}"/>
+                            <GridViewColumn Header="Количество"
+                                            DisplayMemberBinding="{Binding Path=amount}"/>
+                            <GridViewColumn Header="Дата поставки"
+                                            DisplayMemberBinding="{Binding Path=datePurchase}"/>
                         </GridView>
                     </ListView.View>
                 </ListView>

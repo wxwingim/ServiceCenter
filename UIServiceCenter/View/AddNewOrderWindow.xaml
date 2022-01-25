@@ -59,10 +59,10 @@
             <StackPanel x:Name="CustomerAfter" Grid.Row="1" Grid.Column="0">
                 <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
                     <Label Style="{StaticResource h2}">Клиент</Label>
-                    <Button Content="Отмена" Height="30" Width="100" Margin="60 0 0 0" Style="{StaticResource CancelButton}"/>
+                    <Button x:Name="CancelCustomer" Click="CancelCustomer_Click" Content="Отмена" Height="30" Width="100" Margin="60 0 0 0" Style="{StaticResource CancelButton}"/>
                 </StackPanel>
-                <Label>Имя</Label>
-                <Label>Телефон: </Label>
+                <Label x:Name="OrderCustomerName">Имя</Label>
+                <Label x:Name="OrderCustomerPhone">Телефон: </Label>
             </StackPanel>
 
             <StackPanel  Grid.Row="1" Grid.Column="0">
@@ -77,25 +77,25 @@
 
                 <StackPanel Margin="0 20 30 20">
                     <Label Style="{StaticResource h2}">Информация о заказе</Label>
-                    
-                    <StackPanel >
-                        <Label Content="Дата приема" Style="{StaticResource h4}"></Label>
-                        <DatePicker></DatePicker>
-                    </StackPanel>
-                    
+
                     <StackPanel>
                         <Label Content="Ожидаемая дата выдачи" Style="{StaticResource h4}"></Label>
-                        <DatePicker></DatePicker>
+                        <DatePicker x:Name="dateLimit"></DatePicker>
                     </StackPanel>
                 </StackPanel>
 
                 <StackPanel>
                     <Label Style="{StaticResource h2}">Гарантия</Label>
+                    
                     <StackPanel Orientation="Horizontal">
-                        <RadioButton Content="Да" Padding="10 5 10 5" Margin="0 0 20 0" Background="#35A0EE" ></RadioButton>
-                        <RadioButton Content="Нет" Padding="10 5 10 5" Background="#35A0EE"></RadioButton>
+                        <RadioButton x:Name="quaranteeY" GroupName="quarantee"  Content="Да" Padding="10 5 10 5" Margin="0 0 20 0" Background="#35A0EE" ></RadioButton>
+                        <RadioButton x:Name="quaranteeN" GroupName="quarantee"  IsChecked="True" Content="Нет" Padding="10 5 10 5" Background="#35A0EE"></RadioButton>
                     </StackPanel>
                 </StackPanel>
+
+                <ListView x:Name="selectedCustomer" Visibility="Hidden">
+                    
+                </ListView>
             </StackPanel>
             
 
@@ -106,30 +106,32 @@
 
                 <StackPanel Grid.Column="1" Grid.Row="2">
                     <Label Content="Тип" Style="{StaticResource h4}"></Label>
-                    <ComboBox ItemsSource="{Binding Path=AllDevices }" DisplayMemberPath="nameType" Width="200" HorizontalAlignment="Left"></ComboBox>
+                    <ComboBox x:Name="type" ItemsSource="{Binding Path=AllDevices }" DisplayMemberPath="nameType" Width="200" HorizontalAlignment="Left"></ComboBox>
                 </StackPanel>
                 
                 <StackPanel Grid.Column="1" Grid.Row="2">
                     <Label Content="Модель" Style="{StaticResource h4}"></Label>
-                    <TextBox FontFamily="Segoe UI Symbol"></TextBox>
+                    <TextBox x:Name="model" Text="{Binding Model}" FontFamily="Segoe UI Symbol"></TextBox>
                 </StackPanel>
                 
                 <StackPanel Grid.Column="1" Grid.Row="2">
                     <Label Content="Неисправность" Style="{StaticResource h4}"></Label>
-                    <TextBox FontFamily="Segoe UI Symbol"></TextBox>
+                    <TextBox x:Name="defect" Text="{Binding Defect}" FontFamily="Segoe UI Symbol"></TextBox>
                 </StackPanel>
                 
                 <StackPanel Grid.Column="1" Grid.Row="2">
                     <Label Content="Комплектация" Style="{StaticResource h4}"></Label>
-                    <TextBox FontFamily="Segoe UI Symbol"></TextBox>
+                    <TextBox x:Name="equipment" Text="{Binding Equipment}" FontFamily="Segoe UI Symbol"></TextBox>
                 </StackPanel>
                 
                 <StackPanel Grid.Column="1" Grid.Row="2">
                     <Label Content="Механические повреждения" Style="{StaticResource h4}"></Label>
-                    <TextBox FontFamily="Segoe UI Symbol"></TextBox>
+                    <TextBox x:Name="mechanicalDamage" Text="{Binding MechanicalDamage}" FontFamily="Segoe UI Symbol" Cursor="IBeam"></TextBox>
                 </StackPanel>
             </StackPanel>
-            
+
+            <TextBlock x:Name="message" Grid.ColumnSpan="2" Grid.Row="2" Foreground="IndianRed" Text=""/>
+
             <Border Grid.Row="2" Grid.Column="1" BorderBrush="Transparent" HorizontalAlignment="Stretch">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <Button Content="Отмена" x:Name="Back" HorizontalAlignment="Left" Style="{StaticResource CancelButton}" Margin="0 0 20 0" Click="Back_Click"/>

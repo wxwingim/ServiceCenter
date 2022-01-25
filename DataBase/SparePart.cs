@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataBase
 {
@@ -18,12 +15,13 @@ namespace DataBase
         [Required]
         public int priceSpare { get; set; }
 
-        [StringLength(4)]
-        public string unitSpare { get; set; }
+        [ForeignKey("typeSparePart")]
+        public int IdTypeSP { get; set; }
 
-        public List<ListEntry> ListEntries { get; set; }
+        public TypeSparePart typeSparePart { get; set; }
 
-        public List<SalesInvoice> Invoices { get; set; }
+        public List<Purchase> purchases { get; set; }
+        public List<Consumption> consumptions { get; set; }
 
     }
 }

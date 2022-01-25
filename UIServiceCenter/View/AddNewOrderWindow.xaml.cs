@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DataBase;
+using Domain2;
+using System;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using UIServiceCenter.ViewModel;
 
 namespace UIServiceCenter.View
@@ -26,7 +17,7 @@ namespace UIServiceCenter.View
         {
             InitializeComponent();
             CustomerAfter.Visibility = Visibility.Hidden;
-            DataContext = new AddOrderView();
+            DataContext = new AddOrderViewModel();
             this.parent = parent;
         }
 
@@ -40,17 +31,45 @@ namespace UIServiceCenter.View
 
         private void AddCustomer_Click(object sender, RoutedEventArgs e)
         {
-            // ...
-            parent.DoStuff();
-            this.Close();
+            AddNewCustomerWindow addNewCustomerWindow = new AddNewCustomerWindow(this);
+            addNewCustomerWindow.Owner = Application.Current.MainWindow;
+            addNewCustomerWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            addNewCustomerWindow.ShowDialog();
+        }
+
+        private void CancelCustomer_Click(object sender, RoutedEventArgs e)
+        {
+            CustomerAfter.Visibility = Visibility.Hidden;
+            CustomerBefore.Visibility = Visibility.Visible;
         }
 
 
         private void AddOrder_Click(object sender, RoutedEventArgs e)
         {
-            // ...
-            parent.DoStuff();
-            this.Close();
+            Customer cm = (Customer)selectedCustomer.Items[0];
+            PersonD customer = new CustomerD(cm.lastCustom, cm.firstCustom, cm.middleCustom, cm.telCustom, cm.mailCustom);
+            DeviceD deviceCustom = new DeviceD(model.Text, defect.Text, equipment.Text, mechanicalDamage.Text, type.Text, customer);
+            try
+            {
+                if (!deviceCustom.CheckInput()) throw new Exception();
+                AdmissionD admissionD = new AdmissionD(deviceCustom, customer, dateLimit.SelectedDate.Value, (bool)quaranteeY.IsChecked ? true : false);
+                try
+                {
+                    AddOrderViewModel addOrder = new AddOrderViewModel(admissionD);
+
+                    addOrder.CreateNewOrder();
+                    parent.DoStuff();
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    message.Text = "некорректный ввод";
+                }
+            }
+            catch (Exception ex)
+            {
+                message.Text = "Данные устройства введены неверно";
+            }
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)

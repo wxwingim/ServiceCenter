@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace DataBase
@@ -30,6 +26,6 @@ namespace DataBase
         [MaxLength(11)]
         public string telCustom { get; set; }
 
-        public List<Customer_device> devices { get; set; }
+        public List<CustomerDevice> devices { get; set; }
     }
 }

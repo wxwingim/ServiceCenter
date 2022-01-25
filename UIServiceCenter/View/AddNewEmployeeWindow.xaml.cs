@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain2;
+using System;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using UIServiceCenter.ViewModel;
 
 namespace UIServiceCenter.View
@@ -31,16 +21,32 @@ namespace UIServiceCenter.View
 
         private void AddNewEmployee_Click(object sender, RoutedEventArgs e)
         {
-            AddEmployeeView addEmployeeView = new AddEmployeeView();
-            addEmployeeView.LastName = this.lastName.Text;
-            addEmployeeView.FirstName = this.firstName.Text;
-            addEmployeeView.MiddleName = this.middleName.Text;
-            addEmployeeView.Phone = this.phone.Text;
-            addEmployeeView.Email = this.email.Text;
-            addEmployeeView.Position = this.position.Text;
-            addEmployeeView.CreateNewEmployee();
-            parent.DoStuff();
-            this.Close();
+
+            PersonD employee = new EmployeeD(lastName.Text, firstName.Text, middleName.Text, phone.Text, email.Text, position.Text);
+
+            try
+            {
+                if (!employee.CheckInput()) throw new Exception();
+                else
+                {
+                    AddEmployeeView addEmployee = new AddEmployeeView
+                    {
+                        LastName = employee.LastName,
+                        FirstName = employee.FirstName,
+                        MiddleName = employee.MiddleName,
+                        Phone = employee.Phone,
+                        Email = employee.Email,
+                        Position = position.Text
+                    };
+                    addEmployee.CreateNewEmployee();
+                    parent.DoStuff();
+                    this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                messege.Text = "некорректный ввод";
+            }
         }
 
         private void BackEmployee_Click(object sender, RoutedEventArgs e)

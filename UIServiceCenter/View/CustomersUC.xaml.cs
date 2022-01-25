@@ -1,19 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DataBase;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using UIServiceCenter.Model;
-using UIServiceCenter.ViewModel;
 
 namespace UIServiceCenter.View
 {
@@ -40,6 +28,14 @@ namespace UIServiceCenter.View
         public void DoStuff()
         {
             ViewAllCustomers.ItemsSource = DataWorker.GetAllCustomers();
+        }
+
+        private void leftMouseClick(object sender, RoutedEventArgs e)
+        {
+            CustomerProfileWindow win2 = new CustomerProfileWindow((Customer)ViewAllCustomers.SelectedItem, this);
+            win2.Owner = Application.Current.MainWindow;
+            win2.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            win2.ShowDialog();
         }
     }
 }

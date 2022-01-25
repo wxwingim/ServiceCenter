@@ -72,6 +72,7 @@
                     <TextBox x:Name="position" Text="{Binding Position}" Margin="5 0 5 0" FontSize="20" FontFamily="Segoe UI Symbol"></TextBox>
                 </StackPanel>
 
+                <TextBlock x:Name="messege" Grid.Row="4" Grid.ColumnSpan="2" Foreground="IndianRed"/>
                 <Button x:Name="BackEmployee" Margin="0 0 5 0" Content="Отмена" Grid.Column="0" Grid.Row="4" Style="{StaticResource CancelButton}" Click="BackEmployee_Click"/>
                 <Button x:Name="AddNewEmployee" Margin="0 0 5 0" Content="Добавить" Grid.Column="1" Grid.Row="4" Style="{StaticResource AddButton}" Click="AddNewEmployee_Click"/>
             </Grid>
