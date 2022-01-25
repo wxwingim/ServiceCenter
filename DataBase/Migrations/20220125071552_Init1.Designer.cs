@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataBase.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220103201133_Init2")]
-    partial class Init2
+    [Migration("20220125071552_Init1")]
+    partial class Init1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace DataBase.Migrations
                 .HasAnnotation("ProductVersion", "5.0.12")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("DataBase.Admission_for_repair", b =>
+            modelBuilder.Entity("DataBase.AdmissionForRepair", b =>
                 {
                     b.Property<int>("num_admission")
                         .ValueGeneratedOnAdd()
@@ -47,19 +47,29 @@ namespace DataBase.Migrations
                     b.ToTable("Admission_For_Repairs");
                 });
 
-            modelBuilder.Entity("DataBase.Akt_delivery", b =>
+            modelBuilder.Entity("DataBase.Consumption", b =>
                 {
-                    b.Property<int>("numDeliveri")
+                    b.Property<int>("IdConsumption")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime?>("dateDelivery")
-                        .HasColumnType("datetime2");
+                    b.Property<int>("amount")
+                        .HasColumnType("int");
 
-                    b.HasKey("numDeliveri");
+                    b.Property<int>("idSpare")
+                        .HasColumnType("int");
 
-                    b.ToTable("Akt_Deliveries");
+                    b.Property<int>("numOrder")
+                        .HasColumnType("int");
+
+                    b.HasKey("IdConsumption");
+
+                    b.HasIndex("idSpare");
+
+                    b.HasIndex("numOrder");
+
+                    b.ToTable("Cunsumptions");
                 });
 
             modelBuilder.Entity("DataBase.Customer", b =>
@@ -97,7 +107,7 @@ namespace DataBase.Migrations
                     b.ToTable("Customers");
                 });
 
-            modelBuilder.Entity("DataBase.Customer_device", b =>
+            modelBuilder.Entity("DataBase.CustomerDevice", b =>
                 {
                     b.Property<int>("idCustDev")
                         .ValueGeneratedOnAdd()
@@ -132,7 +142,7 @@ namespace DataBase.Migrations
                     b.ToTable("Customer_Devices");
                 });
 
-            modelBuilder.Entity("DataBase.Device_type", b =>
+            modelBuilder.Entity("DataBase.DeviceType", b =>
                 {
                     b.Property<int>("typeId")
                         .ValueGeneratedOnAdd()
@@ -189,104 +199,27 @@ namespace DataBase.Migrations
                     b.ToTable("Employees");
                 });
 
-            modelBuilder.Entity("DataBase.ListEntry", b =>
+            modelBuilder.Entity("DataBase.Purchase", b =>
                 {
-                    b.Property<int>("numRow")
-                        .HasColumnType("int");
-
-                    b.Property<int>("numPurchase")
-                        .HasColumnType("int");
+                    b.Property<int>("PurchaseId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("amount")
                         .HasColumnType("int");
 
-                    b.Property<int>("idSpare")
-                        .HasColumnType("int");
-
-                    b.HasKey("numRow", "numPurchase");
-
-                    b.HasIndex("idSpare");
-
-                    b.HasIndex("numPurchase");
-
-                    b.ToTable("ListEntries");
-                });
-
-            modelBuilder.Entity("DataBase.Provider", b =>
-                {
-                    b.Property<int>("idProv")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("addresProv")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("emailProv")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<string>("innProv")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
-
-                    b.Property<string>("phoneProv")
-                        .IsRequired()
-                        .HasMaxLength(11)
-                        .HasColumnType("nvarchar(11)");
-
-                    b.HasKey("idProv");
-
-                    b.ToTable("Providers");
-                });
-
-            modelBuilder.Entity("DataBase.PurchaseInvoice", b =>
-                {
-                    b.Property<int>("numPurchase")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
                     b.Property<DateTime>("datePurchase")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("idProvider")
-                        .HasColumnType("int");
-
-                    b.HasKey("numPurchase");
-
-                    b.HasIndex("idProvider");
-
-                    b.ToTable("PurchaseInvoices");
-                });
-
-            modelBuilder.Entity("DataBase.SalesInvoice", b =>
-                {
-                    b.Property<int>("numSales")
-                        .HasColumnType("int");
-
-                    b.Property<int>("numWork")
-                        .HasColumnType("int");
-
-                    b.Property<int>("amountSales")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("dateSales")
-                        .HasColumnType("datetime2");
-
                     b.Property<int>("idSpare")
                         .HasColumnType("int");
 
-                    b.HasKey("numSales", "numWork");
+                    b.HasKey("PurchaseId");
 
                     b.HasIndex("idSpare");
 
-                    b.HasIndex("numWork");
-
-                    b.ToTable("SalesInvoices");
+                    b.ToTable("Purchases");
                 });
 
             modelBuilder.Entity("DataBase.Service", b =>
@@ -295,6 +228,9 @@ namespace DataBase.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("guarantee")
+                        .HasColumnType("int");
 
                     b.Property<string>("nameService")
                         .IsRequired()
@@ -315,7 +251,7 @@ namespace DataBase.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("PurchaseInvoicenumPurchase")
+                    b.Property<int>("IdTypeSP")
                         .HasColumnType("int");
 
                     b.Property<string>("nameSpare")
@@ -326,29 +262,57 @@ namespace DataBase.Migrations
                     b.Property<int>("priceSpare")
                         .HasColumnType("int");
 
-                    b.Property<string>("unitSpare")
-                        .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
-
                     b.HasKey("idSpare");
 
-                    b.HasIndex("PurchaseInvoicenumPurchase");
+                    b.HasIndex("IdTypeSP");
 
                     b.ToTable("SpareParts");
                 });
 
-            modelBuilder.Entity("DataBase.Work_order", b =>
+            modelBuilder.Entity("DataBase.StatusRepair", b =>
+                {
+                    b.Property<int>("StatusId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("StatusName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("StatusId");
+
+                    b.ToTable("StatusRepairs");
+                });
+
+            modelBuilder.Entity("DataBase.TypeSparePart", b =>
+                {
+                    b.Property<int>("IdTypeSP")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("IdTypeSP");
+
+                    b.ToTable("TypeSpareParts");
+                });
+
+            modelBuilder.Entity("DataBase.WorkOrder", b =>
                 {
                     b.Property<int>("numOrder")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("durationQuarantee")
+                    b.Property<int>("StatusId")
                         .HasColumnType("int");
 
-                    b.Property<int>("numDeliveri")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("dateDelivery")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("num_admission")
                         .HasColumnType("int");
@@ -359,21 +323,16 @@ namespace DataBase.Migrations
                     b.Property<bool>("statusPaymnt")
                         .HasColumnType("bit");
 
-                    b.Property<string>("statusRepair")
-                        .IsRequired()
-                        .HasMaxLength(21)
-                        .HasColumnType("nvarchar(21)");
-
                     b.HasKey("numOrder");
 
-                    b.HasIndex("numDeliveri");
+                    b.HasIndex("StatusId");
 
                     b.HasIndex("num_admission");
 
                     b.ToTable("Work_Orders");
                 });
 
-            modelBuilder.Entity("DataBase.Work_repair", b =>
+            modelBuilder.Entity("DataBase.WorkRepair", b =>
                 {
                     b.Property<int>("numWork")
                         .ValueGeneratedOnAdd()
@@ -403,9 +362,9 @@ namespace DataBase.Migrations
                     b.ToTable("Work_Repairs");
                 });
 
-            modelBuilder.Entity("DataBase.Admission_for_repair", b =>
+            modelBuilder.Entity("DataBase.AdmissionForRepair", b =>
                 {
-                    b.HasOne("DataBase.Customer_device", "customerDevice")
+                    b.HasOne("DataBase.CustomerDevice", "customerDevice")
                         .WithMany("admissionForRepairs")
                         .HasForeignKey("idCustDev")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -414,7 +373,26 @@ namespace DataBase.Migrations
                     b.Navigation("customerDevice");
                 });
 
-            modelBuilder.Entity("DataBase.Customer_device", b =>
+            modelBuilder.Entity("DataBase.Consumption", b =>
+                {
+                    b.HasOne("DataBase.SparePart", "sparePart")
+                        .WithMany("consumptions")
+                        .HasForeignKey("idSpare")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataBase.WorkOrder", "workOrder")
+                        .WithMany("consumptions")
+                        .HasForeignKey("numOrder")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("sparePart");
+
+                    b.Navigation("workOrder");
+                });
+
+            modelBuilder.Entity("DataBase.CustomerDevice", b =>
                 {
                     b.HasOne("DataBase.Customer", "customer")
                         .WithMany("devices")
@@ -422,7 +400,7 @@ namespace DataBase.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DataBase.Device_type", "type")
+                    b.HasOne("DataBase.DeviceType", "type")
                         .WithMany("customer_Devices")
                         .HasForeignKey("typeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -433,71 +411,37 @@ namespace DataBase.Migrations
                     b.Navigation("type");
                 });
 
-            modelBuilder.Entity("DataBase.ListEntry", b =>
+            modelBuilder.Entity("DataBase.Purchase", b =>
                 {
                     b.HasOne("DataBase.SparePart", "sparePart")
-                        .WithMany("ListEntries")
+                        .WithMany("purchases")
                         .HasForeignKey("idSpare")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("DataBase.PurchaseInvoice", "purchaseInvoice")
-                        .WithMany()
-                        .HasForeignKey("numPurchase")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("purchaseInvoice");
 
                     b.Navigation("sparePart");
                 });
 
-            modelBuilder.Entity("DataBase.PurchaseInvoice", b =>
-                {
-                    b.HasOne("DataBase.Provider", "provider")
-                        .WithMany("purchaseIns")
-                        .HasForeignKey("idProvider")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("provider");
-                });
-
-            modelBuilder.Entity("DataBase.SalesInvoice", b =>
-                {
-                    b.HasOne("DataBase.SparePart", "part")
-                        .WithMany("Invoices")
-                        .HasForeignKey("idSpare")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("DataBase.Work_repair", "workRepair")
-                        .WithMany("invoices")
-                        .HasForeignKey("numWork")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("part");
-
-                    b.Navigation("workRepair");
-                });
-
             modelBuilder.Entity("DataBase.SparePart", b =>
                 {
-                    b.HasOne("DataBase.PurchaseInvoice", null)
+                    b.HasOne("DataBase.TypeSparePart", "typeSparePart")
                         .WithMany("spareParts")
-                        .HasForeignKey("PurchaseInvoicenumPurchase");
-                });
-
-            modelBuilder.Entity("DataBase.Work_order", b =>
-                {
-                    b.HasOne("DataBase.Akt_delivery", "aktDelivery")
-                        .WithMany()
-                        .HasForeignKey("numDeliveri")
+                        .HasForeignKey("IdTypeSP")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DataBase.Admission_for_repair", "AdmissionForRepair")
+                    b.Navigation("typeSparePart");
+                });
+
+            modelBuilder.Entity("DataBase.WorkOrder", b =>
+                {
+                    b.HasOne("DataBase.StatusRepair", "statusRepair")
+                        .WithMany("workOrders")
+                        .HasForeignKey("StatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataBase.AdmissionForRepair", "AdmissionForRepair")
                         .WithMany("work_Order")
                         .HasForeignKey("num_admission")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -505,10 +449,10 @@ namespace DataBase.Migrations
 
                     b.Navigation("AdmissionForRepair");
 
-                    b.Navigation("aktDelivery");
+                    b.Navigation("statusRepair");
                 });
 
-            modelBuilder.Entity("DataBase.Work_repair", b =>
+            modelBuilder.Entity("DataBase.WorkRepair", b =>
                 {
                     b.HasOne("DataBase.Employee", "employee")
                         .WithMany("workRepairs")
@@ -522,7 +466,7 @@ namespace DataBase.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DataBase.Work_order", "workOrder")
+                    b.HasOne("DataBase.WorkOrder", "workOrder")
                         .WithMany("workRepairs")
                         .HasForeignKey("numOrder")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -535,7 +479,7 @@ namespace DataBase.Migrations
                     b.Navigation("workOrder");
                 });
 
-            modelBuilder.Entity("DataBase.Admission_for_repair", b =>
+            modelBuilder.Entity("DataBase.AdmissionForRepair", b =>
                 {
                     b.Navigation("work_Order");
                 });
@@ -545,12 +489,12 @@ namespace DataBase.Migrations
                     b.Navigation("devices");
                 });
 
-            modelBuilder.Entity("DataBase.Customer_device", b =>
+            modelBuilder.Entity("DataBase.CustomerDevice", b =>
                 {
                     b.Navigation("admissionForRepairs");
                 });
 
-            modelBuilder.Entity("DataBase.Device_type", b =>
+            modelBuilder.Entity("DataBase.DeviceType", b =>
                 {
                     b.Navigation("customer_Devices");
                 });
@@ -560,16 +504,6 @@ namespace DataBase.Migrations
                     b.Navigation("workRepairs");
                 });
 
-            modelBuilder.Entity("DataBase.Provider", b =>
-                {
-                    b.Navigation("purchaseIns");
-                });
-
-            modelBuilder.Entity("DataBase.PurchaseInvoice", b =>
-                {
-                    b.Navigation("spareParts");
-                });
-
             modelBuilder.Entity("DataBase.Service", b =>
                 {
                     b.Navigation("workRepairs");
@@ -577,19 +511,26 @@ namespace DataBase.Migrations
 
             modelBuilder.Entity("DataBase.SparePart", b =>
                 {
-                    b.Navigation("Invoices");
+                    b.Navigation("consumptions");
 
-                    b.Navigation("ListEntries");
+                    b.Navigation("purchases");
                 });
 
-            modelBuilder.Entity("DataBase.Work_order", b =>
+            modelBuilder.Entity("DataBase.StatusRepair", b =>
                 {
+                    b.Navigation("workOrders");
+                });
+
+            modelBuilder.Entity("DataBase.TypeSparePart", b =>
+                {
+                    b.Navigation("spareParts");
+                });
+
+            modelBuilder.Entity("DataBase.WorkOrder", b =>
+                {
+                    b.Navigation("consumptions");
+
                     b.Navigation("workRepairs");
-                });
-
-            modelBuilder.Entity("DataBase.Work_repair", b =>
-                {
-                    b.Navigation("invoices");
                 });
 #pragma warning restore 612, 618
         }
