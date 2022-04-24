@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="UIServiceCenter.View.CustomersUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UIServiceCenter.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Border Padding="80 0 80 0">
+            <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0">Клиенты</Label>
+                
+            <Button Command="{Binding AddNewCustomerWin}" Click="CreateNewCustomer" Content="Добавить клиента" Grid.Row="1" Background="#35A0EE" Height="40" Foreground="White" BorderBrush="Transparent" Width="200" FontFamily="Segoe UI Symbol" Cursor="Hand" HorizontalAlignment="Right" HorizontalContentAlignment="Center"/>
+
+
+            <ListView x:Name="ViewAllCustomers" Grid.Row="2" ItemsSource="{Binding AllCustomers}" MouseLeftButtonUp="leftMouseClick">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Фамилия"                                            
+                                            DisplayMemberBinding="{Binding Path=lastCustom}"/>
+                        <GridViewColumn Header="Имя"
+                                            DisplayMemberBinding="{Binding Path=firstCustom}"/>
+                        <GridViewColumn Header="Отчество"
+                                            DisplayMemberBinding="{Binding Path=middleCustom}"/>
+                        <GridViewColumn Header="Телефон"
+                                            DisplayMemberBinding="{Binding Path=telCustom}"/>
+                        <GridViewColumn Header="Email"
+                                            DisplayMemberBinding="{Binding Path=mailCustom}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+        </Border>
+        
+    </Grid>
+</UserControl>

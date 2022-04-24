@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="UIServiceCenter.View.OrdersUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UIServiceCenter.View"
+             mc:Ignorable="d" 
+             MinHeight="450" MinWidth="400" HorizontalAlignment="Stretch">
+    <Grid>
+        <Border Padding="80 0 80 0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="0.15*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0">Заказы</Label>
+
+                <Button Click="CreateNewOrder" 
+                        Content="Добавить заказ" Grid.Row="1" Background="#35A0EE" Height="40" Foreground="White" BorderBrush="Transparent" Width="200" FontFamily="Segoe UI Symbol" Cursor="Hand" HorizontalAlignment="Right"/>
+
+                <StackPanel Grid.Row="1" HorizontalAlignment="Left" Orientation="Horizontal" VerticalAlignment="Center">
+
+                    <StackPanel Margin="0 0 20 0">
+                        <Label Content="Статус ремонта"/>
+                        <ComboBox x:Name="status" ItemsSource="{Binding AllStatusesRepair}" DisplayMemberPath="StatusName" Width="150" SelectionChanged="status_SelectionChanged" SelectedIndex="0"/>
+                    </StackPanel>
+                </StackPanel>
+                
+
+
+                <ListView x:Name="ViewAllOrders" MouseLeftButtonUp="leftMouseClick" Grid.Row="2" ItemsSource="{Binding AllOrders}" Margin="0 10 0 0">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Номер"                                            
+                                                DisplayMemberBinding="{Binding Path=numOrder}"/>
+                            <GridViewColumn Header="Устройство"                                            
+                                                DisplayMemberBinding="{Binding Path=nameModel}"/>
+                            <GridViewColumn Header="Неисправность"
+                                                DisplayMemberBinding="{Binding Path=defect}"/>
+                            <GridViewColumn Header="Дата приема"
+                                                DisplayMemberBinding="{Binding Path=date_admission}"/>
+                            <GridViewColumn Header="Статус ремонта"
+                                                DisplayMemberBinding="{Binding Path=statusRepair}"/>
+                            <GridViewColumn Header="Статус оплаты"
+                                                DisplayMemberBinding="{Binding Path=statusPaymnt}"/>
+                            <GridViewColumn Header="Статус выдачи"
+                                                DisplayMemberBinding="{Binding Path=statusDelivery}"/>
+                            <GridViewColumn Header="Гарантия"
+                                                DisplayMemberBinding="{Binding Path=quarantee}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+        </Border>
+    </Grid>
+    
+</UserControl>
