@@ -4,10 +4,8 @@ plugins {
     id 'org.openjfx.javafxplugin' version '0.0.9'
 }
 
-//group 'org.example'
-//version '1.0-SNAPSHOT'
-
-sourceCompatibility = 1.8
+group 'org.example'
+version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -18,13 +16,9 @@ dependencies {
     implementation group: 'org.postgresql', name: 'postgresql', version: '42.3.3'
     // https://mvnrepository.com/artifact/com.aquafx-project/aquafx
     implementation group: 'com.aquafx-project', name: 'aquafx', version: '0.1'
-
-
 }
 
 javafx {
     version = "11"
     modules = [ 'javafx.controls', 'javafx.fxml' ]
 }
-
-mainClassName = 'prim2JavaFX'

@@ -98,7 +98,7 @@ public class DBHandler {
         try{
             Connection con = DriverManager.getConnection(connectionString);
             PreparedStatement st = con.prepareStatement(
-                    "INSERT INTO purchases(name, purchase_price, retail_price, amount, guarantee, id_part_type, date_purchase)" +
+                    "INSERT INTO purchases(name, purchase_price, retail_price, amount, quarantee, id_part_type, date_purchase)" +
                             "VALUES (?, ?, ?, ?, ?, ?, now())");
             st.setObject(1, purchase.getName());
             st.setObject(2, purchase.getPurchase_price());

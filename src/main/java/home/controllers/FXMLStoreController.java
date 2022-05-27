@@ -2,7 +2,6 @@ package home.controllers;
 
 import home.Main;
 import home.model.DBHandler;
-import home.model.PartType;
 import home.model.Purchases;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
@@ -14,7 +13,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-//import javax.swing.text.TableView;
 import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;

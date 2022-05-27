@@ -1,6 +1,5 @@
 package home.model;
 
-import java.math.BigDecimal;
 import java.sql.Date;
 
 public class Purchases {

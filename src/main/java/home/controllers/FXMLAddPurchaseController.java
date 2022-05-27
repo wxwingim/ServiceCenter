@@ -76,26 +76,26 @@ public class FXMLAddPurchaseController extends BaseController implements Initial
         retPriceCol.setCellValueFactory(new PropertyValueFactory<Purchases, Double>("retail_price"));
         amountPurchaseCol.setCellValueFactory(new PropertyValueFactory<Purchases, Integer>("amount"));
         datePurchaseCol.setCellValueFactory(new PropertyValueFactory<Purchases, Date>("date_purchase"));
-
-        tableNewPurchases.setItems(possiblePurchases);
     }
 
     public void addPurchases(ActionEvent actionEvent) {
         PartType selectedType = (PartType) typesComboBox.getValue();
 
-        // TODO possiblePurchases.add(new Purchase(...))
         Purchases newPurchase = new Purchases(
-                namePurchaseCol.getText(),
-                Double.parseDouble(purPriceCol.getText()),
-                Double.parseDouble(retPriceCol.getText()),
+                namePurchaseInput.getText(),
+                getDoubleFromTextField(purPriceInput),
+                getDoubleFromTextField(retPriceInput),
                 Integer.parseInt(amountInput.getText()),
                 Integer.parseInt(quaranteeInput.getText()),
                 selectedType.getId()
         );
-        possiblePurchases.add(newPurchase);
-        // TODO update table
 
-        tableNewPurchases.setItems(possiblePurchases);
+        newPurchase.setPartType(DBHandler.getPartTypeById(newPurchase.getId_part_type()));
+        possiblePurchases.add(newPurchase);
+
+        ObservableList<Purchases> purchases = possiblePurchases;
+        tableNewPurchases.setItems(purchases);
+
     }
 
     public void saveAddPurchases(ActionEvent actionEvent) {
@@ -128,6 +128,11 @@ public class FXMLAddPurchaseController extends BaseController implements Initial
     public void toStore(ActionEvent actionEvent) {
         Main.getNavigation().load("/FXMLStore.fxml").Show();
 
+    }
+
+    private double getDoubleFromTextField(TextField textField) {
+        String text = textField.getText();
+        return Double.parseDouble(text);
     }
 
 

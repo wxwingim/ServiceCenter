@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a1741d69-677a-477a-bb54-ce1e387c7ef2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries-with-intellij-classes.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/home/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/home/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/home/controllers/BaseController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/home/controllers/BaseController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/home/controllers/FXMLAddPurchaseController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/home/controllers/FXMLAddPurchaseController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/home/controllers/FXMLCustomersController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/home/controllers/FXMLCustomersController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/home/controllers/FXMLHomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/home/controllers/FXMLHomeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/home/controllers/FXMLOrdersController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/home/controllers/FXMLOrdersController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/home/controllers/FXMLStoreController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/home/controllers/FXMLStoreController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/home/controllers/Navigation.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/home/controllers/Navigation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/home/controllers/NavigationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/home/controllers/NavigationController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/home/model/DBHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/home/model/DBHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/home/model/PartType.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/home/model/PartType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/home/model/Purchases.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/home/model/Purchases.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/home/model/Service.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/home/model/Service.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/distributions/lab2-test-gradle-1.0-SNAPSHOT.tar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/distributions/lab2-test-gradle-1.0-SNAPSHOT.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/lab2-test-gradle-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/scripts/lab2-test-gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/scripts/lab2-test-gradle.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/jar/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/home/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/home/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/home/controllers/FXMLAddPurchaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/home/controllers/FXMLAddPurchaseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/home/controllers/FXMLHomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/home/controllers/FXMLHomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/home/controllers/FXMLStoreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/home/controllers/FXMLStoreController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/home/model/DBHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/home/model/DBHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/home/model/Purchases.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/home/model/Purchases.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="29lHZn6P3jhGWflFC4oqUKGxhZF" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="postgresql" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.43149808" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/home/controllers" />
+      <recent name="$PROJECT_DIR$/src/main/java/home/model" />
+      <recent name="$PROJECT_DIR$/src/main/java/controllers" />
+      <recent name="$PROJECT_DIR$/src/main/java/model" />
+      <recent name="$PROJECT_DIR$/src/main/java" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="home" />
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="home.Main" />
+      <module name="SERVICEcenter.main" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;$PROJECT_DIR$/../../../componentsJava/javafx-sdk-18.0.1/lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="home.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a1741d69-677a-477a-bb54-ce1e387c7ef2" name="Default Changelist" comment="" />
+      <created>1653680810253</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1653680810253</updated>
+      <workItem from="1653680815212" duration="1502000" />
+      <workItem from="1653682406965" duration="7451000" />
+      <workItem from="1653693981903" duration="1435000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+</project>

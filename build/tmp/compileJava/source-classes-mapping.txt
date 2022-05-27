@@ -1,0 +1,26 @@
+home/controllers/BaseController.java
+ home.controllers.BaseController
+home/model/Purchases.java
+ home.model.Purchases
+home/controllers/NavigationController.java
+ home.controllers.NavigationController
+home/controllers/FXMLCustomersController.java
+ home.controllers.FXMLCustomersController
+home/model/Service.java
+ home.model.Service
+home/controllers/FXMLOrdersController.java
+ home.controllers.FXMLOrdersController
+home/Main.java
+ home.Main
+home/model/PartType.java
+ home.model.PartType
+home/controllers/FXMLHomeController.java
+ home.controllers.FXMLHomeController
+home/controllers/Navigation.java
+ home.controllers.Navigation
+home/controllers/FXMLStoreController.java
+ home.controllers.FXMLStoreController
+home/model/DBHandler.java
+ home.model.DBHandler
+home/controllers/FXMLAddPurchaseController.java
+ home.controllers.FXMLAddPurchaseController

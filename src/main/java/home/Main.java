@@ -1,12 +1,7 @@
 package home;
 
-import com.aquafx_project.AquaFx;
-import home.controllers.FXMLHomeController;
 import home.controllers.Navigation;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
