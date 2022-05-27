@@ -1,0 +1,60 @@
+.sidebar-button{
+    -fx-background-color: rgba(255, 255, 255, 0);
+    -fx-border-radius: 4 0 0 4;
+    -fx-background-radius: 4 0 0 4;
+    -fx-text-fill: #FFF;
+}
+
+.sidebar-button:hover{
+    -fx-text-fill: #FFF;
+    -fx-background-color: rgba(248, 251, 255, 0.6);
+}
+
+.sidebar-button:pressed{
+    -fx-text-fill: #302963;
+    -fx-background-color: #F8FBFF;
+}
+
+.back-button{
+    -fx-background-color: rgba(255, 255, 255, 0);
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-border-color: #302963;
+    -fx-border-width: 1;
+    -fx-text-fill: #302963;
+}
+.back-button:hover{
+    -fx-background-color: rgba(57, 41, 224, 0.43);
+    -fx-border-color: linear-gradient(to left, #795AF3, #3929E0);
+    -fx-text-fill: #FFF;
+}
+.back-button:pressed{
+
+}
+
+.login-button, .check-button{
+    -fx-background-color: #3929E0;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-text-fill: #FFF;
+}
+
+.login-button:hover, .check-button:hover{
+    -fx-background-color: linear-gradient(to left, #795AF3, #3929E0);
+    -fx-text-fill: #FFF;
+}
+
+.login-button:pressed, .check-button:pressed{
+    -fx-background-color: rgba(57, 41, 224, 0.6);
+    -fx-text-fill: #FFF;
+}
+
+.pane-blue{
+    -fx-background-color: linear-gradient(to left, #795AF3, #3929E0);
+    -fx-text-fill: #FFF;
+}
+
+.pane-light{
+    -fx-background-color: #F8FBFF;
+    -fx-text-fill: #302963;
+}
