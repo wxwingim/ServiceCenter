@@ -3,18 +3,18 @@ package home.model;
 import java.sql.Date;
 
 public class OrderRequest {
-    Long id;
-    String addres;
-    Date date_limit;
-    Date date_request;
-    String defect;
-    String equipment;
-    String mechanical_damage;
-    String model;
-    Boolean quarantee;
-    Integer id_device_type;
-    Integer id_user;
-    Integer id_status_type;
+    private Long id;
+    private String addres;
+    private Date date_limit;
+    private Date date_request;
+    private String defect;
+    private String equipment;
+    private String mechanical_damage;
+    private String model;
+    private Boolean quarantee;
+    private Integer id_device_type;
+    private Integer id_user;
+    private Integer id_status_type;
 
     DeviceType deviceType;
     User user;

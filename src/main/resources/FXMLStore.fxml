@@ -70,7 +70,7 @@
                         <Pane prefHeight="46.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                         <Button fx:id="addPurchaseButton" alignment="CENTER" mnemonicParsing="false" onAction="#toAddPurchase" prefHeight="42.0" prefWidth="200.0" styleClass="check-button" stylesheets="@style.css" text="Добавить поставку">
                            <font>
-                              <Font name="SF Pro Display Regular" size="18.0" />
+                              <Font name="SF Pro Display Regular" size="16.0" />
                            </font>
                            <HBox.margin>
                               <Insets bottom="25.0" left="30.0" right="30.0" top="30.0" />
@@ -94,6 +94,7 @@
                      <children>
                         <TableView fx:id="tablePurchases" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                            <columns>
+                              <TableColumn fx:id="editCol" prefWidth="75.0" text="Редактировать" />
                               <TableColumn fx:id="typePurchaseCol" prefWidth="75.0" text="Тип" />
                               <TableColumn fx:id="namePurchaseCol" prefWidth="75.0" text="Наименование" />
                               <TableColumn fx:id="purPriceCol" prefWidth="75.0" text="Закупочная цена" />

@@ -1,20 +1,36 @@
 package home.model;
 
 public class User {
-    Long id;
-    String email;
-    String first_name;
-    String last_name;
-    String middle_name;
-    String password;
-    String phone;
+    private Long id;
+    private String email;
+    private String first_name;
+    private String last_name;
+    private String middle_name;
+    private String password;
+    private String phone;
+    private String position;
 
-    public User(String email, String first_name, String last_name, String middle_name, String password, String phone) {
+    public String fullName(){
+        return last_name + "\n" + first_name + "\n" + middle_name;
+    }
+
+    public User(Long id, String email, String first_name, String last_name, String middle_name, String password, String phone, String position) {
+        this.id = id;
         this.email = email;
         this.first_name = first_name;
         this.last_name = last_name;
         this.middle_name = middle_name;
         this.password = password;
+        this.phone = phone;
+        this.position = position;
+    }
+
+    public User(Long id, String email, String first_name, String last_name, String middle_name, String phone){
+        this.id = id;
+        this.email = email;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.middle_name = middle_name;
         this.phone = phone;
     }
 
@@ -51,8 +67,16 @@ public class User {
         return phone;
     }
 
+    public String getPosition() {
+        return position;
+    }
+
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
     }
 
     public void setEmail(String email) {

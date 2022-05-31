@@ -32,19 +32,19 @@
 
 }
 
-.login-button, .check-button{
-    -fx-background-color: #3929E0;
+.login-button, .check-button, .search-button{
+    -fx-background-color: #795AF3;
     -fx-border-radius: 4;
     -fx-background-radius: 4;
     -fx-text-fill: #FFF;
 }
 
-.login-button:hover, .check-button:hover{
+.login-button:hover, .check-button:hover, .search-button:hover{
     -fx-background-color: linear-gradient(to left, #795AF3, #3929E0);
     -fx-text-fill: #FFF;
 }
 
-.login-button:pressed, .check-button:pressed{
+.login-button:pressed, .check-button:pressed, .search-button:pressed{
     -fx-background-color: rgba(57, 41, 224, 0.6);
     -fx-text-fill: #FFF;
 }

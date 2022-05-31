@@ -9,12 +9,22 @@ public class Purchases {
     private Double retail_price;
     private Date date_purchase;
     private Integer amount;
-    private int guarantee;
+    private Integer guarantee;
     private Integer id_part_type;
 
     private PartType partType;
 
     public Purchases(){
+    }
+
+    public Purchases(Long id, String name, Double purchase_price, Double retail_price, Integer amount, Integer guarantee, Integer id_part_type){
+        this.id=id;
+        this.purchase_price = purchase_price;
+        this.retail_price = retail_price;
+        this.amount = amount;
+        this.guarantee = guarantee;
+        this.name = name;
+        this.id_part_type = id_part_type;
     }
 
     public Purchases(String name, Double purchase_price, Double retail_price, Integer amount, Integer guarantee, Integer id_part_type){
@@ -60,7 +70,7 @@ public class Purchases {
         return partType;
     }
 
-    public int getGuarantee() {
+    public Integer getGuarantee() {
         return guarantee;
     }
 
@@ -96,7 +106,7 @@ public class Purchases {
         this.partType = partType;
     }
 
-    public void setGuarantee(int guarantee) {
+    public void setGuarantee(Integer guarantee) {
         this.guarantee = guarantee;
     }
 }

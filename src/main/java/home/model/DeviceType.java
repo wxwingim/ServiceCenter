@@ -1,14 +1,20 @@
 package home.model;
 
 public class DeviceType {
-    Integer id;
-    String name_type;
+    private Integer id;
+    private String name_type;
 
-    public DeviceType(String name_type) {
+    public DeviceType(Integer id, String name_type) {
+        this.id = id;
         this.name_type = name_type;
     }
 
     public DeviceType() {
+    }
+
+    @Override
+    public String toString(){
+        return String.format("%s", name_type);
     }
 
     // getters and setters

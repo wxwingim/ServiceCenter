@@ -1,13 +1,19 @@
 package home.model;
 
 public class StatusRepair {
-    Integer id;
-    String name_status;
+    private Integer id;
+    private String name_status;
 
-    public StatusRepair(String name_status) {
+    public StatusRepair(Integer id, String name_status) {
+        this.id = id;
         this.name_status = name_status;
     }
     public StatusRepair(){}
+
+    @Override
+    public String toString(){
+        return String.format("%s", name_status);
+    }
 
     // getters and setters
 
